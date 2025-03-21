@@ -11,12 +11,16 @@
     <div id="app">
       <div>
         <div style="display: flex; align-items: center; justify-content: space-between;">
-          <button id="leftButton" type="button" style="border-radius: 70px">x</button>
+          <button id="leftButton" type="button" class="btn btn-secondary" style="border-radius: 70px; padding: 10px;" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
+            <img src="/share.png" alt="share" style="width: 25px; height: 25px; padding: 1px;">
+          </button>
           <h1>Bañdle</h1>
-          <button id="rightButton" type="button" style="border-radius: 70px">?</button>
+          <button id="rightButton"  class="btn btn-secondary" type="button" style="border-radius: 70px; padding: 10px" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <img src="/info.png" alt="help" style="width: 25px; height: 25px;">
+          </button>
         </div>
         
-        <div class="card" id="card6" style="background-color:rgba(240, 240, 240, 0.4); display: flex; align-items: center; border: 2px solid rgba(0, 40, 218, 0.5); border-radius: 70px; margin-bottom: 5px;padding: 5px;">
+        <div class="card" id="card6" style="background-color:rgba(240, 240, 240, 0.4); display: flex; align-items: center; border: 2px solid rgba(0, 40, 218, 0.5); border-radius: 70px; margin-bottom: 5px;margin-top: 20px;padding: 5px;">
           <div class="card-body">
             Año: 2017 | Visitas en YouTube: 16M
           </div>
@@ -104,19 +108,68 @@
         </p>
       </div>
 
-<div class="toast-container position-fixed bottom-0 end-0 p-3">
-  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header">
-      <img src="/delete.png" class="rounded me-2" alt="...">
-      <strong class="me-auto">INCORRECTO</strong>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <img src="/delete.png" class="rounded me-2" alt="...">
+            <strong class="me-auto">INCORRECTO</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            Intentalo otra vez con la proxima pista.
+          </div>
+        </div>
+      </div>
+
+<!-- ModalInfo-->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">¿Como se juega?</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h5>Escucha las pistas y adivina la canción y el artista.</h5>
+            <br>
+            <ul>
+              <li>Si no sabes la respuesta, puedes saltar a la siguiente pista.</li>
+              <br>
+              <li>Si crees que sabes la respuesta, escribe el nombre de la canción y el artista en el cuadro de texto y presiona el botón de adivinar con el formato:</li>
+            </ul>
+            <strong>"Cancion - Artista"</strong>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Jugar!</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="toast-body">
-      Intentalo otra vez con la proxima pista.
+
+  <!-- ModalShare -->
+  <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Compartir</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h5>Comparte el juego con tus amigos!</h5>
+          <p>Bandle #947 3/6</p>
+          <p>🟥🟥🟩⬜⬜⬜</p>
+          <a href="https://bandle.app/">bañdle.app</a>
+
+          <!--🟩⭕⬛⬜🔳◻◼-->
+          <br>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Compartir</button>
+        </div>
+      </div>  
     </div>
   </div>
-</div>
-    </div>
+
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

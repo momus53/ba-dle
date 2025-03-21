@@ -15,7 +15,7 @@ textInput.addEventListener('input', () => {
   const query = textInput.value.toLowerCase();
   if (query.length > 0) {
     // Example suggestions, replace with your own logic
-    const exampleSuggestions = ['Intento - Ulises Bueno', 'Otra Canción - Otro Artista', 'Más Canciones - Más Artistas'];
+    const exampleSuggestions = ['Intento - Ulises Bueno', 'Canción - Artista', 'Más Canciones - Más Artistas'];
     const filteredSuggestions = exampleSuggestions.filter(suggestion => suggestion.toLowerCase().includes(query));
     suggestions.innerHTML = filteredSuggestions.map(suggestion => `<div class="suggestion-item">${suggestion}</div>`).join('');
     suggestions.style.display = 'block';
