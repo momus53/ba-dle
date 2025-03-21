@@ -74,7 +74,7 @@
           </div>
         </div>
         
-        <div class="card" id="card5" style="border-radius: 70px; background-color:rgba(240, 240, 240, 0.18); margin-bottom: 5px; padding: 5px;">
+        <div class="card" id="card5" style="border-radius: 70px; background-color:rgba(240, 240, 240, 0.18); margin-bottom: 5px; padding: 20px;">
           <div class="row no-gutters">
             <div class="col-10 d-flex align-items-center">
               <p id="pista5" class="mb-0">Pista 5: Pista del nombre</p>
@@ -103,6 +103,19 @@
           mis sitios web etc
         </p>
       </div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="/delete.png" class="rounded me-2" alt="...">
+      <strong class="me-auto">INCORRECTO</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Intentalo otra vez con la proxima pista.
+    </div>
+  </div>
+</div>
     </div>
     <script type="module" src="/src/main.js"></script>
   </body>

@@ -101,10 +101,21 @@ button:focus-visible {
   gap: 37px; /* Espacio entre los botones */
 }
 .red-button {
-  background-color: rgb(202, 0, 0);
+  background-color: rgb(201, 35, 35);
   color: white; /* Mantén el texto en blanco para mejor contraste */
 }
 .green-button{
   background-color: green;
   color: white;
+}
+.skipOrNext {
+  background-color: rgb(145, 6, 6);
+  border: none;
+}
+.selectedCard {
+  border: 2px solid rgba(0, 40, 218, 0.5);
+}
+.guessedCard {
+  background-color: rgb(6, 145, 29);
+  border: none;
 }
