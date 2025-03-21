@@ -2,12 +2,107 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bañdle - Adivina la canción</title>
   </head>
   <body>
     <div id="app">
+      <div>
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <button id="leftButton" type="button" style="border-radius: 70px">x</button>
+          <h1>Bañdle</h1>
+          <button id="rightButton" type="button" style="border-radius: 70px">?</button>
+        </div>
+        
+        <div class="card" id="card6" style="background-color:rgba(240, 240, 240, 0.4); display: flex; align-items: center; border: 2px solid rgba(0, 40, 218, 0.5); border-radius: 70px; margin-bottom: 5px;padding: 5px;">
+          <div class="card-body">
+            Año: 2017 | Visitas en YouTube: 16M
+          </div>
+        </div>
+    
+        <div class="card" id="card1" style="border-radius: 70px; background-color:rgba(240, 240, 240, 0.18); margin-bottom: 5px; padding: 5px;">
+          <div class="row no-gutters">
+            <div class="col-10 d-flex align-items-center">
+              <p id="pista1" class="mb-0">Pista 1: Bajo</p>
+            </div>
+            <div class="col-2 d-flex align-items-center justify-content-end">
+              <button id="play1" type="button" style="border-radius: 70px; background-color: rgb(255, 203, 168);" disabled>
+              <img src="play-icon.svg" alt="Play Icon" style="width: 35px; height: 35px;">
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" id="card2" style="border-radius: 70px; background-color:rgba(240, 240, 240, 0.18); margin-bottom: 5px; padding: 5px; ">
+            <div class="row no-gutters">
+            <div class="col-10 d-flex align-items-center">
+              <p id="pista2" class="mb-0">Pista 2: Percusión</p>
+            </div>
+            <div class="col-2 d-flex align-items-center justify-content-end">
+              <button id="play2" type="button" style="border-radius: 70px; background-color: rgb(255, 203, 168);" disabled>
+              <img src="play-icon.svg" alt="Play Icon" style="width: 35px; height: 35px;">
+              </button>
+            </div>
+            </div>
+        </div>
+
+        <div class="card" id="card3" style="border-radius: 70px; background-color:rgba(240, 240, 240, 0.18); margin-bottom: 5px;padding: 5px;">
+          <div class="row no-gutters">
+            <div class="col-10 d-flex align-items-center">
+              <p id="pista3" class="mb-0">Pista 3: Piano + Guitarra</p>
+            </div>
+            <div class="col-2 d-flex align-items-center justify-content-end">
+              <button id="play3" type="button" style="border-radius: 70px; background-color: rgb(255, 203, 168);" disabled>
+                <img src="play-icon.svg" alt="Play Icon" style="width: 35px; height: 35px;">
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" id="card4" style="border-radius: 70px; background-color:rgba(240, 240, 240, 0.18); margin-bottom: 5px; padding: 5px;">
+          <div class="row no-gutters">
+            <div class="col-10 d-flex align-items-center">
+              <p id="pista4" class="mb-0">Pista 4: Voces</p>
+            </div>
+            <div class="col-2 d-flex align-items-center justify-content-end">
+              <button id="play4" type="button" style="border-radius: 70px; background-color: rgb(255, 203, 168);" disabled>
+                <img src="play-icon.svg" alt="Play Icon" style="width: 35px; height: 35px;">
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card" id="card5" style="border-radius: 70px; background-color:rgba(240, 240, 240, 0.18); margin-bottom: 5px; padding: 5px;">
+          <div class="row no-gutters">
+            <div class="col-10 d-flex align-items-center">
+              <p id="pista5" class="mb-0">Pista 5: Pista del nombre</p>
+            </div>
+            <div class="col-2 d-flex align-items-center justify-content-end">
+            </div>
+          </div>
+        </div>
+    
+        <div id="texto">
+          <input type="text" id="textInput" placeholder="¿Que canción es?¿Que artista es?" style="width: 100%; padding: 10px; border-radius: 50px; border: 1px solid #ccc;">
+          <div id="suggestions" style="border: 1px solid #ccc; border-radius: 7px; display: none; position: absolute; background-color: white; z-index: 1000;">
+            <!-- Suggestions will be inserted here -->
+          </div>
+        </div>
+    
+          <h3 id="win1"></h3>
+          <h3 id="win2"></h3>
+
+          <div>
+            <button id="skip" type="button" style="border-radius: 20px;"></button>
+            <button id="guess" type="button" style="border-radius: 20px;"></button>
+          </div>
+          
+        <p class="read-the-docs">
+          mis sitios web etc
+        </p>
+      </div>
     </div>
     <script type="module" src="/src/main.js"></script>
   </body>
