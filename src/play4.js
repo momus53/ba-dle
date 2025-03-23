@@ -1,3 +1,4 @@
+import { Nrocancion } from './main.js';
 export function setupPlay4(element) {
     element.addEventListener('click', () => play4())
 }
@@ -12,8 +13,7 @@ export function stop4() {
 }
 function play4() {
     if (!audio) {
-        audio = new Audio('audio/cancion/Vocals.wav');
-    }
+        audio = new Audio('audio/cancion'+Nrocancion+'/track4.mp3');    }
 
     if (isPlaying) {
         audio.pause();

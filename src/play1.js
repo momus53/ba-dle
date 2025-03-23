@@ -1,3 +1,4 @@
+import {Nrocancion} from './main.js';
 export function setupPlay1(element) {
     element.addEventListener('click', () => play1())
 }
@@ -12,7 +13,7 @@ export function stop1() {
 }
 function play1() {
     if (!audio) {
-        audio = new Audio('audio/cancion/Bass.mp3');
+        audio = new Audio('audio/cancion'+Nrocancion+'/track1.mp3');
     }
 
     if (isPlaying) {

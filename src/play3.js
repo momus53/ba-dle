@@ -1,3 +1,4 @@
+import { Nrocancion } from './main.js';
 export function setupPlay3(element) {
     element.addEventListener('click', () => play3())
 }
@@ -12,8 +13,7 @@ export function stop3() {
 }
 function play3() {
     if (!audio) {
-        audio = new Audio('audio/cancion/Piano+Strings.mp3');
-    }
+        audio = new Audio('audio/cancion'+Nrocancion+'/track3.mp3');    }
 
     if (isPlaying) {
         audio.pause();
