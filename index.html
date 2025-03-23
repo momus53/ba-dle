@@ -120,6 +120,20 @@
         </div>
       </div>
 
+
+      <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="copyToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <img src="/check.png" class="rounded me-2" alt="...">
+            <strong class="me-auto">Exito!</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            El resultado de la partida ha sido copiado al portapapeles.
+          </div>
+        </div>
+      </div>
+
 <!-- ModalInfo-->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
@@ -155,14 +169,13 @@
         </div>
         <div class="modal-body">
           <h5>Comparte el juego con tus amigos!</h5>
-          <p>Bandle #947 3/6</p>
-          <p>🟥🟥🟩⬜⬜⬜</p>
+          <div id="compartir">
+            Termina la partida actual para ver tu reultado.
+          </div>
           <a href="https://bandle.app/">bañdle.app</a>
-
-          <!--🟩⭕⬛⬜🔳◻◼-->
           <br>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Compartir</button>
+          <button id="compartirbtn" type="button" class="btn btn-success" data-bs-dismiss="modal">Compartir</button>
         </div>
       </div>  
     </div>
