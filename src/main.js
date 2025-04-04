@@ -1,4 +1,4 @@
-import './style.css'
+import './src/style.css'
 import { setupSkip } from './skip.js'
 import { setupGuess } from './guess.js'
 import { setupPlay1} from './play1.js'
