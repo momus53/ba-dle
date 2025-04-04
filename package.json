@@ -13,6 +13,10 @@
     "vite": "^6.2.0"
   },
   "dependencies": {
-    "bootstrap": "^5.3.3"
+    "bootstrap": "^5.3.3",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.0",
+    "safer-buffer": "^2.1.2"
   }
 }

@@ -1,15 +1,27 @@
 import './style.css'
 import { setupSkip } from './skip.js'
 import { setupGuess } from './guess.js'
-import { setupPlay1, stop1} from './play1.js'
-import { setupPlay2, stop2 } from './play2.js'
-import { setupPlay3, stop3 } from './play3.js'
-import { setupPlay4, stop4} from './play4.js'
+import { setupPlay1} from './play1.js'
+import { setupPlay2} from './play2.js'
+import { setupPlay3} from './play3.js'
+import { setupPlay4} from './play4.js'
+import { stopAudio } from './audioManager.js'
 import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js'
 export {Nrocancion}
 
 const suggestions = document.getElementById('suggestions');
 const textInput = document.getElementById('textInput');
+
+// Obtener canciones desde el backend
+fetch('http://localhost:3000/canciones')
+    .then((response) => response.json())
+    .then((data) => {
+        console.log('Canciones desde la base de datos:', data);
+        // Puedes usar los datos para actualizar tu lógica
+    })
+    .catch((error) => {
+        console.error('Error al obtener las canciones:', error);
+    });
 
 const canciones = ['Intento', 'Perfecta','El anillo del capitán Beto'];//, 'cancion4', 'cancion5', 'cancion6', 'cancion7'];
 const artistas = ['Ulises Bueno', 'Miranda!','Invisible'];//, 'artista4', 'artista5', 'artista6', 'artista7'];
@@ -70,28 +82,28 @@ document.querySelector('#skip').addEventListener('click', () => {
         document.getElementById('card2').style.border='2px solid rgba(0, 40, 218, 0.5)';
         document.getElementById('card1').style.border='';
         document.getElementById('play2').disabled = false;
-        stop1();
+        stopAudio();
         break;
       case 3:
         document.getElementById('card2').style.backgroundColor = 'rgb(196, 58, 58)';
         document.getElementById('card3').style.border='2px solid rgba(0, 40, 218, 0.5)';
         document.getElementById('card2').style.border='';
         document.getElementById('play3').disabled = false;
-        stop2();
+        stopAudio();
         break;
       case 4:
         document.getElementById('card3').style.backgroundColor = 'rgb(196, 58, 58)';
         document.getElementById('card4').style.border='2px solid rgba(0, 40, 218, 0.5)';
         document.getElementById('card3').style.border='';
         document.getElementById('play4').disabled = false;
-        stop3();
+        stopAudio();
         break;
       case 5:
         document.getElementById('card4').style.backgroundColor = 'rgb(196, 58, 58)';
         document.getElementById('card5').style.border='2px solid rgba(0, 40, 218, 0.5)';
         document.getElementById('card4').style.border='';
         document.getElementById('pista5').innerText= "Pista 5: "+pistas5[aux];
-        stop4();
+        stopAudio();
         break;
       case 6:
         document.getElementById('compartir').innerHTML = '<p>Bandle #947 3/6</p> <p>🟥🟥🟥🟥🟥🟥</p>'
@@ -163,7 +175,7 @@ document.querySelector('#guess').addEventListener('click', () => {
         document.getElementById('card2').style.border='2px solid rgba(0, 40, 218, 0.5)';
         document.getElementById('card1').style.border='';
         document.getElementById('play2').disabled = false;
-        stop1();
+        stopAudio();
         break;
       case 3:
         toast.show()
@@ -171,7 +183,7 @@ document.querySelector('#guess').addEventListener('click', () => {
         document.getElementById('card3').style.border='2px solid rgba(0, 40, 218, 0.5)';
         document.getElementById('card2').style.border='';
         document.getElementById('play3').disabled = false;
-        stop2();
+        stopAudio();
         break;
       case 4:
         toast.show()
@@ -179,7 +191,7 @@ document.querySelector('#guess').addEventListener('click', () => {
         document.getElementById('card4').style.border='2px solid rgba(0, 40, 218, 0.5)';
         document.getElementById('card3').style.border='';
         document.getElementById('play4').disabled = false;
-        stop3();
+        stopAudio();
         break;
       case 5:
         toast.show()
@@ -187,7 +199,7 @@ document.querySelector('#guess').addEventListener('click', () => {
         document.getElementById('card5').style.border='2px solid rgba(0, 40, 218, 0.5)';
         document.getElementById('card4').style.border='';
         document.getElementById('pista5').innerText= "Pista 5: "+pistas5[aux];
-        stop4();
+        stopAudio();
         break;
       case 6:
         alert("Incorrecto. Has perdido :c");
