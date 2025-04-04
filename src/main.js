@@ -4,12 +4,14 @@ import { setupPlay1} from './play1.js'
 import { setupPlay2} from './play2.js'
 import { setupPlay3} from './play3.js'
 import { setupPlay4} from './play4.js'
-import { stopAudio } from './audioManager.js'
+import { playAudio, stopAudio } from './audioManager.js'
 //import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js'
 export {Nrocancion}
 
 const suggestions = document.getElementById('suggestions');
 const textInput = document.getElementById('textInput');
+const currentDate = new Date().toLocaleDateString();
+let audioL = null;
 
 // Obtener canciones desde el backend
 /*fetch('http://localhost:3000/canciones')
@@ -22,10 +24,15 @@ const textInput = document.getElementById('textInput');
         console.error('Error al obtener las canciones:', error);
     });
 */
-const canciones = ['Intento', 'Perfecta','El anillo del capitán Beto'];//, 'cancion4', 'cancion5', 'cancion6', 'cancion7'];
-const artistas = ['Ulises Bueno', 'Miranda!','Invisible'];//, 'artista4', 'artista5', 'artista6', 'artista7'];
-const pistas0 = ['Año: 2017 | Visitas en YouTube: 16M', 'Año: 2007 | Visitas en YouTube: 420M', 'Año: 1976 | Visitas en YouTube: 3.8M','Año: 2002 | Visitas en YouTube: 10M', 'Pista 5: PRUEBA', 'Pista 6: PRUEBA'];
-const pistas5 = ['PRUEBA', 'IMPECABLE', 'CAPITAN', 'TESORO', 'P4RUEBA', 'P5RUEBA'];
+const canciones = ['Intento', 'Perfecta','El anillo del capitán Beto','Malamente'];//, 'cancion4', 'cancion5', 'cancion6', 'cancion7'];
+const artistas = ['Ulises Bueno', 'Miranda!','Invisible','Rosalia'];//, 'artista4', 'artista5', 'artista6', 'artista7'];
+const pistas0 = ['Año: 2017 | Visitas en YouTube: 16M'
+               , 'Año: 2007 | Visitas en YouTube: 420M'
+               , 'Año: 1976 | Visitas en YouTube: 3.8M'
+                ,'Año: 2018 | Visitas en YouTube: 167M'
+                , 'Pista 5: PRUEBA'
+                , 'Pista 6: PRUEBA'];
+const pistas5 = ['PRUEBA', 'IMPECABLE', 'CAPITAN', 'CON MALDAD', 'P4RUEBA', 'P5RUEBA'];
 
 textInput.addEventListener('input', () => {
   const query = textInput.value.toLowerCase();
@@ -140,7 +147,7 @@ document.querySelector('#skip').addEventListener('click', () => {
         stopAudio();
         break;
       case 6:
-        document.getElementById('compartir').innerHTML = '<p>Bandle #947 3/6</p> <p>🟥🟥🟥🟥🟥🟥</p>'
+        document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p> <p>🟥🟥🟥🟥🟥🟥</p>`;
         document.getElementById('card5').style.backgroundColor = 'rgb(196, 58, 58)';
         document.getElementById('card5').style.border='';
         document.getElementById('win1').innerText = "Perdiste, La canción era: ";
@@ -148,6 +155,8 @@ document.querySelector('#skip').addEventListener('click', () => {
         document.querySelector('#skip').style.visibility = 'hidden';
         document.querySelector('#guess').style.visibility = 'hidden';
         document.querySelector('#texto').style.visibility = 'hidden';
+        audioL = new Audio('./audio/negative_beeps-6008.mp3');
+        playAudio(audioL);
         break;
       default:
         break;
@@ -162,7 +171,7 @@ document.querySelector('#guess').addEventListener('click', () => {
     document.getElementById('win2').innerText = `${cancion} - ${artista}`;
     if(pista == 0){
       document.getElementById('card6').style.backgroundColor = 'rgb(11, 145, 6)';
-      document.getElementById('compartir').innerHTML = '<p>Bandle #947 3/6</p> <p>🟩⬜⬜⬜⬜⬜</p>';
+      document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟩⬜⬜⬜⬜⬜</p>`;
     }else{
       document.getElementById('card'+pista).style.backgroundColor = 'rgb(11, 145, 6)';
     }
@@ -175,19 +184,19 @@ document.querySelector('#guess').addEventListener('click', () => {
     document.querySelector('#texto').style.visibility = 'hidden';
     switch (pista) {
       case 1:
-        document.getElementById('compartir').innerHTML = '<p>Bandle #947 3/6</p> <p>🟥🟩⬜⬜⬜⬜</p>';
+       document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟩⬜⬜⬜⬜</p>`;
         break;
       case 2:
-        document.getElementById('compartir').innerHTML = '<p>Bandle #947 3/6</p> <p>🟥🟥🟩⬜⬜⬜</p>';
+       document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟥🟩⬜⬜⬜</p>`;
         break;
       case 3:
-        document.getElementById('compartir').innerHTML = '<p>Bandle #947 3/6</p> <p>🟥🟥🟥🟩⬜⬜</p>'; 
+       document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟥🟥🟩⬜⬜</p>`; 
         break;
       case 4:
-        document.getElementById('compartir').innerHTML = '<p>Bandle #947 3/6</p> <p>🟥🟥🟥🟥🟩⬜</p>';
+       document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟥🟥🟥🟩⬜</p>`;
         break;
       case 5:
-        document.getElementById('compartir').innerHTML = '<p>Bandle #947 3/6</p> <p>🟥🟥🟥🟥🟥🟩</p>';
+       document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟥🟥🟥🟥🟩</p>`;
         break;
       default:
         break;
@@ -241,7 +250,9 @@ document.querySelector('#guess').addEventListener('click', () => {
         document.getElementById('card5').style.border='';
         document.getElementById('win1').innerText = "Perdiste, La canción era: ";
         document.getElementById('win2').innerText = cancion + " - " + artista;
-        document.getElementById('compartir').innerHTML = '<p>Bandle #947 3/6</p> <p>🟥🟥🟥🟥🟥🟥</p>'
+        document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p> <p>🟥🟥🟥🟥🟥🟥</p>`;
+        audioL = new Audio('./audio/negative_beeps-6008.mp3');
+        playAudio(audioL);
         break;
       default:
         break;
