@@ -6,7 +6,7 @@ import { setupPlay2} from './play2.js'
 import { setupPlay3} from './play3.js'
 import { setupPlay4} from './play4.js'
 import { stopAudio } from './audioManager.js'
-import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js'
+//import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js'
 export {Nrocancion}
 
 const suggestions = document.getElementById('suggestions');
