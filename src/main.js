@@ -12,7 +12,7 @@ const suggestions = document.getElementById('suggestions');
 const textInput = document.getElementById('textInput');
 
 // Obtener canciones desde el backend
-fetch('http://localhost:3000/canciones')
+/*fetch('http://localhost:3000/canciones')
     .then((response) => response.json())
     .then((data) => {
         console.log('Canciones desde la base de datos:', data);
@@ -21,7 +21,7 @@ fetch('http://localhost:3000/canciones')
     .catch((error) => {
         console.error('Error al obtener las canciones:', error);
     });
-
+*/
 const canciones = ['Intento', 'Perfecta','El anillo del capitán Beto'];//, 'cancion4', 'cancion5', 'cancion6', 'cancion7'];
 const artistas = ['Ulises Bueno', 'Miranda!','Invisible'];//, 'artista4', 'artista5', 'artista6', 'artista7'];
 const pistas0 = ['Año: 2017 | Visitas en YouTube: 16M', 'Año: 2007 | Visitas en YouTube: 420M', 'Año: 1976 | Visitas en YouTube: 3.8M','Año: 2002 | Visitas en YouTube: 10M', 'Pista 5: PRUEBA', 'Pista 6: PRUEBA'];
@@ -31,7 +31,42 @@ textInput.addEventListener('input', () => {
   const query = textInput.value.toLowerCase();
   if (query.length > 0) {
     // Example suggestions, replace with your own logic
-    const exampleSuggestions = ['Intento - Ulises Bueno', 'Perfecta - Miranda!', 'El anillo del capitán Beto - Invisible', 'cancion4 - artista4', 'cancion5 - artista5', 'cancion6 - artista6', 'cancion7 - artista7'];
+    const exampleSuggestions = ['Intento - Ulises Bueno', 'Perfecta - Miranda!', 'El anillo del capitán Beto - Invisible', 'Sin Documentos - Los Rodriguez', 'Virtual Diva - Don Omar', 'Malamente - Rosalia', 'Tuve que quemar - Sara Hebe',
+      'La Bicicleta - Carlos Vives & Shakira', 
+      'Despacito - Luis Fonsi & Daddy Yankee', 
+      'Bailando - Enrique Iglesias', 
+      'Vivir Mi Vida - Marc Anthony', 
+      'Corazón Partío - Alejandro Sanz', 
+      'Me Gustas Tú - Manu Chao', 
+      'La Camisa Negra - Juanes', 
+      'Rayando el Sol - Maná', 
+      'Color Esperanza - Diego Torres', 
+      'La Gozadera - Gente de Zona & Marc Anthony', 
+      'Chantaje - Shakira & Maluma', 
+      'Felices los 4 - Maluma', 
+      'Mi Gente - J Balvin & Willy William', 
+      'Te Amo - Franco de Vita', 
+      'El Perdón - Nicky Jam & Enrique Iglesias',
+      'Gasolina - Daddy Yankee', 
+      'Livin’ la Vida Loca - Ricky Martin', 
+      'La Tortura - Shakira & Alejandro Sanz', 
+      'Bésame Mucho - Consuelo Velázquez', 
+      'Bailando Por Ahí - Juan Magán', 
+      'Danza Kuduro - Don Omar & Lucenzo', 
+      'Propuesta Indecente - Romeo Santos', 
+      'La Mordidita - Ricky Martin', 
+      'Taboo - Don Omar',
+      'De Música Ligera - Soda Stereo',
+      'Persiana Americana - Soda Stereo',
+      'Crimen - Gustavo Cerati',
+      'La Ciudad de la Furia - Soda Stereo',
+      'Lamento Boliviano - Los Enanitos Verdes',
+      'Costumbres Argentinas - Los Abuelos de la Nada',
+      'Seminare - Serú Girán',
+      'Los Dinosaurios - Charly García',
+      'Mariposa Tecknicolor - Fito Páez',
+      'Un Vestido y un Amor - Fito Páez',
+    ];
     const filteredSuggestions = exampleSuggestions.filter(suggestion => suggestion.toLowerCase().includes(query));
     suggestions.innerHTML = filteredSuggestions.map(suggestion => `<div class="suggestion-item">${suggestion}</div>`).join('');
     suggestions.style.display = 'block';
