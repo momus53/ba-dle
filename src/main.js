@@ -112,10 +112,10 @@ document.getElementById('pista2').innerText=pistas2[aux];
 document.getElementById('pista3').innerText=pistas3[aux];
 document.getElementById('pista4').innerText=pistas4[aux];
 
+document.getElementById('card1').classList.add('cardbounce');
 
 
-document.getElementById('card1').style.border='3px solid rgba(0, 40, 218, 0.5)';
-
+//document.getElementById('card1').style.border='3px solid rgba(0, 40, 218, 0.5)';
 let pista = 0; // 0-6 indica en que pista esta actualmente el usuario
 document.querySelector('#skip').addEventListener('click', () => {
   if (pista < 6) {
@@ -124,36 +124,31 @@ document.querySelector('#skip').addEventListener('click', () => {
     switch (pista) {
       case 1:
         document.getElementById('card1').style.backgroundColor = 'rgb(196, 58, 58)';
-        document.getElementById('card2').style.border='3px solid rgba(0, 40, 218, 0.5)';
-        document.getElementById('card1').style.border='';
+        document.getElementById('card2').classList.add('cardbounce');
         document.getElementById('play2').disabled = false;
         stopAudio();
         break;
       case 2:
         document.getElementById('card2').style.backgroundColor = 'rgb(196, 58, 58)';
-        document.getElementById('card3').style.border='3px solid rgba(0, 40, 218, 0.5)';
-        document.getElementById('card2').style.border='';
+        document.getElementById('card3').classList.add('cardbounce');
         document.getElementById('play3').disabled = false;
         stopAudio();
         break;
       case 3:
         document.getElementById('card3').style.backgroundColor = 'rgb(196, 58, 58)';
-        document.getElementById('card4').style.border='3px solid rgba(0, 40, 218, 0.5)';
-        document.getElementById('card3').style.border='';
+        document.getElementById('card4').classList.add('cardbounce');
         document.getElementById('play4').disabled = false;
         stopAudio();
         break;
       case 4:
         document.getElementById('card4').style.backgroundColor = 'rgb(196, 58, 58)';
-        document.getElementById('card5').style.border='3px solid rgba(0, 40, 218, 0.5)';
-        document.getElementById('card4').style.border='';
+        document.getElementById('card5').classList.add('cardbounce');
         document.getElementById('pista5').innerText=pistas5[aux];
         stopAudio();
         break;
       case 5:
         document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p> <p>🟥🟥🟥🟥🟥</p>`;
         document.getElementById('card5').style.backgroundColor = 'rgb(196, 58, 58)';
-        document.getElementById('card5').style.border='';
         document.getElementById('win1').innerText = "Perdiste, La canción era: ";
         document.getElementById('win2').innerText = cancion + " - " + artista;
         document.querySelector('#skip').style.visibility = 'hidden';
@@ -213,51 +208,54 @@ document.querySelector('#guess').addEventListener('click', () => {
       case 1:
         toast.show()
         document.getElementById('card1').style.backgroundColor = 'rgb(196, 58, 58)';
-        document.getElementById('card2').style.border='3px solid rgba(0, 40, 218, 0.5)';
-        document.getElementById('card1').style.border='';
+        document.getElementById('card2').classList.add('cardbounce');
         document.getElementById('play2').disabled = false;
         stopAudio();
         break;
       case 2:
         toast.show()
         document.getElementById('card2').style.backgroundColor = 'rgb(196, 58, 58)';
-        document.getElementById('card3').style.border='3px solid rgba(0, 40, 218, 0.5)';
-        document.getElementById('card2').style.border='';
+        document.getElementById('card3').classList.add('cardbounce');
         document.getElementById('play3').disabled = false;
         stopAudio();
         break;
       case 3:
         toast.show()
         document.getElementById('card3').style.backgroundColor = 'rgb(196, 58, 58)';
-        document.getElementById('card4').style.border='3px solid rgba(0, 40, 218, 0.5)';
-        document.getElementById('card3').style.border='';
+        document.getElementById('card4').classList.add('cardbounce');
         document.getElementById('play4').disabled = false;
         stopAudio();
         break;
       case 4:
         toast.show()
         document.getElementById('card4').style.backgroundColor = 'rgb(196, 58, 58)';
-        document.getElementById('card5').style.border='3px solid rgba(0, 40, 218, 0.5)';
-        document.getElementById('card4').style.border='';
+        document.getElementById('card5').classList.add('cardbounce');
         document.getElementById('pista5').innerText=pistas5[aux];
         stopAudio();
         break;
       case 5:
-        toast.show()
-        alert("Incorrecto. Has perdido :c");
+        toast.show();
         document.getElementById('card5').style.backgroundColor = 'rgb(196, 58, 58)';
-        document.getElementById('card5').style.border='';
         document.getElementById('win1').innerText = "Perdiste, La canción era: ";
         document.getElementById('win2').innerText = cancion + " - " + artista;
         document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p> <p>🟥🟥🟥🟥🟥</p>`;
-        audioL = new Audio('./audio/negative_beeps-6008.mp3');
+        audioL = new Audio('./public/audio/negative_beeps-6008.mp3');
         playAudio(audioL);
+        document.getElementById('play1').disabled = false;
+        document.getElementById('play2').disabled = false;
+        document.getElementById('play3').disabled = false;
+        document.getElementById('play4').disabled = false;
+        document.querySelector('#skip').style.visibility = 'hidden';
+        document.querySelector('#guess').style.visibility = 'hidden';
+        document.querySelector('#texto').style.visibility = 'hidden';
         break;
       default:
         break;
     }
   }
 });
+
+
 const toastLiveExample = document.getElementById('liveToast')
 const toastCopy = document.getElementById('copyToast')
 const toast = new bootstrap.Toast(toastLiveExample)
