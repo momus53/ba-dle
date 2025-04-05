@@ -32,6 +32,10 @@ const pistas0 = ['Año: 2017 | Visitas en YouTube: 16M'
                 ,'Año: 2018 | Visitas en YouTube: 167M'
                 , 'Pista 5: PRUEBA'
                 , 'Pista 6: PRUEBA'];
+const pistas1 = ['Bajo', 'Percusión','Bajo','Percusión'];//, 'cancion4', 'cancion5', 'cancion6', 'cancion7'];
+const pistas2 = ['Percusión', 'Bajo','Percusión','Bajo'];//, 'artista4', 'artista5', 'artista6', 'artista7'];
+const pistas3 = ['Piano+Violin', 'Piano+Sintetizador','Guitarra+Sintetizador','Sintetizador'];//, 'cancion4', 'cancion5', 'cancion6', 'cancion7'];
+const pistas4 = ['Voces','Voces','Voces','Voces'];//, 'artista4', 'artista5', 'artista6', 'artista7'];
 const pistas5 = ['PRUEBA', 'IMPECABLE', 'CAPITAN', 'CON MALDAD', 'P4RUEBA', 'P5RUEBA'];
 
 textInput.addEventListener('input', () => {
@@ -103,8 +107,14 @@ let cancion = canciones[aux];
 let artista = artistas[aux];
 let Nrocancion = aux+1;
 document.getElementById('pistaYT').innerText= pistas0[aux];
+document.getElementById('pista1').innerText=pistas1[aux];
+document.getElementById('pista2').innerText=pistas2[aux];
+document.getElementById('pista3').innerText=pistas3[aux];
+document.getElementById('pista4').innerText=pistas4[aux];
 
 
+
+document.getElementById('card1').style.border='3px solid rgba(0, 40, 218, 0.5)';
 
 let pista = 0; // 0-6 indica en que pista esta actualmente el usuario
 document.querySelector('#skip').addEventListener('click', () => {
@@ -113,41 +123,35 @@ document.querySelector('#skip').addEventListener('click', () => {
     console.log(pista);
     switch (pista) {
       case 1:
-        document.getElementById('card6').style.backgroundColor = 'rgb(196, 58, 58)';
-        document.getElementById('card1').style.border='2px solid rgba(0, 40, 218, 0.5)';
-        document.getElementById('card6').style.border='';
-        document.getElementById('play1').disabled = false;
-        break;
-      case 2:
         document.getElementById('card1').style.backgroundColor = 'rgb(196, 58, 58)';
-        document.getElementById('card2').style.border='2px solid rgba(0, 40, 218, 0.5)';
+        document.getElementById('card2').style.border='3px solid rgba(0, 40, 218, 0.5)';
         document.getElementById('card1').style.border='';
         document.getElementById('play2').disabled = false;
         stopAudio();
         break;
-      case 3:
+      case 2:
         document.getElementById('card2').style.backgroundColor = 'rgb(196, 58, 58)';
-        document.getElementById('card3').style.border='2px solid rgba(0, 40, 218, 0.5)';
+        document.getElementById('card3').style.border='3px solid rgba(0, 40, 218, 0.5)';
         document.getElementById('card2').style.border='';
         document.getElementById('play3').disabled = false;
         stopAudio();
         break;
-      case 4:
+      case 3:
         document.getElementById('card3').style.backgroundColor = 'rgb(196, 58, 58)';
-        document.getElementById('card4').style.border='2px solid rgba(0, 40, 218, 0.5)';
+        document.getElementById('card4').style.border='3px solid rgba(0, 40, 218, 0.5)';
         document.getElementById('card3').style.border='';
         document.getElementById('play4').disabled = false;
         stopAudio();
         break;
-      case 5:
+      case 4:
         document.getElementById('card4').style.backgroundColor = 'rgb(196, 58, 58)';
-        document.getElementById('card5').style.border='2px solid rgba(0, 40, 218, 0.5)';
+        document.getElementById('card5').style.border='3px solid rgba(0, 40, 218, 0.5)';
         document.getElementById('card4').style.border='';
-        document.getElementById('pista5').innerText= "Pista 5: "+pistas5[aux];
+        document.getElementById('pista5').innerText=pistas5[aux];
         stopAudio();
         break;
-      case 6:
-        document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p> <p>🟥🟥🟥🟥🟥🟥</p>`;
+      case 5:
+        document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p> <p>🟥🟥🟥🟥🟥</p>`;
         document.getElementById('card5').style.backgroundColor = 'rgb(196, 58, 58)';
         document.getElementById('card5').style.border='';
         document.getElementById('win1').innerText = "Perdiste, La canción era: ";
@@ -170,9 +174,10 @@ document.querySelector('#guess').addEventListener('click', () => {
     document.getElementById('win1').innerText = "¡Ganaste! La canción es:";
     document.getElementById('win2').innerText = `${cancion} - ${artista}`;
     if(pista == 0){
-      document.getElementById('card6').style.backgroundColor = 'rgb(11, 145, 6)';
-      document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟩⬜⬜⬜⬜⬜</p>`;
+      document.getElementById('card1').style.backgroundColor = 'rgb(11, 145, 6)';
+      document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟩⬜⬜⬜⬜</p>`;
     }else{
+      pista++;
       document.getElementById('card'+pista).style.backgroundColor = 'rgb(11, 145, 6)';
     }
     document.getElementById('play1').disabled = false;
@@ -184,19 +189,19 @@ document.querySelector('#guess').addEventListener('click', () => {
     document.querySelector('#texto').style.visibility = 'hidden';
     switch (pista) {
       case 1:
-       document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟩⬜⬜⬜⬜</p>`;
+       document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟩⬜⬜⬜</p>`;
         break;
       case 2:
-       document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟥🟩⬜⬜⬜</p>`;
+       document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟥🟩⬜⬜</p>`;
         break;
       case 3:
-       document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟥🟥🟩⬜⬜</p>`; 
+       document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟥🟥🟩⬜</p>`; 
         break;
       case 4:
-       document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟥🟥🟥🟩⬜</p>`;
+       document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟥🟥🟩⬜</p>`;
         break;
       case 5:
-       document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟥🟥🟥🟥🟩</p>`;
+       document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟥🟥🟥🟩</p>`;
         break;
       default:
         break;
@@ -207,50 +212,44 @@ document.querySelector('#guess').addEventListener('click', () => {
     switch (pista) {
       case 1:
         toast.show()
-        document.getElementById('card6').style.backgroundColor = 'rgb(196, 58, 58)';
-        document.getElementById('card1').style.border='2px solid rgba(0, 40, 218, 0.5)';
-        document.getElementById('card6').style.border='';
-        document.getElementById('play1').disabled = false;
-        break;
-      case 2:
-        toast.show()
         document.getElementById('card1').style.backgroundColor = 'rgb(196, 58, 58)';
-        document.getElementById('card2').style.border='2px solid rgba(0, 40, 218, 0.5)';
+        document.getElementById('card2').style.border='3px solid rgba(0, 40, 218, 0.5)';
         document.getElementById('card1').style.border='';
         document.getElementById('play2').disabled = false;
         stopAudio();
         break;
-      case 3:
+      case 2:
         toast.show()
         document.getElementById('card2').style.backgroundColor = 'rgb(196, 58, 58)';
-        document.getElementById('card3').style.border='2px solid rgba(0, 40, 218, 0.5)';
+        document.getElementById('card3').style.border='3px solid rgba(0, 40, 218, 0.5)';
         document.getElementById('card2').style.border='';
         document.getElementById('play3').disabled = false;
         stopAudio();
         break;
-      case 4:
+      case 3:
         toast.show()
         document.getElementById('card3').style.backgroundColor = 'rgb(196, 58, 58)';
-        document.getElementById('card4').style.border='2px solid rgba(0, 40, 218, 0.5)';
+        document.getElementById('card4').style.border='3px solid rgba(0, 40, 218, 0.5)';
         document.getElementById('card3').style.border='';
         document.getElementById('play4').disabled = false;
         stopAudio();
         break;
-      case 5:
+      case 4:
         toast.show()
         document.getElementById('card4').style.backgroundColor = 'rgb(196, 58, 58)';
-        document.getElementById('card5').style.border='2px solid rgba(0, 40, 218, 0.5)';
+        document.getElementById('card5').style.border='3px solid rgba(0, 40, 218, 0.5)';
         document.getElementById('card4').style.border='';
-        document.getElementById('pista5').innerText= "Pista 5: "+pistas5[aux];
+        document.getElementById('pista5').innerText=pistas5[aux];
         stopAudio();
         break;
-      case 6:
+      case 5:
+        toast.show()
         alert("Incorrecto. Has perdido :c");
         document.getElementById('card5').style.backgroundColor = 'rgb(196, 58, 58)';
         document.getElementById('card5').style.border='';
         document.getElementById('win1').innerText = "Perdiste, La canción era: ";
         document.getElementById('win2').innerText = cancion + " - " + artista;
-        document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p> <p>🟥🟥🟥🟥🟥🟥</p>`;
+        document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p> <p>🟥🟥🟥🟥🟥</p>`;
         audioL = new Audio('./audio/negative_beeps-6008.mp3');
         playAudio(audioL);
         break;
