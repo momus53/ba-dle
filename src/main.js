@@ -12,6 +12,7 @@ const suggestions = document.getElementById('suggestions');
 const textInput = document.getElementById('textInput');
 const currentDate = new Date().toLocaleDateString();
 let audioL = null;
+audioL = new Audio('./public/audio/negative_beeps-6008.mp3');
 
 // Obtener canciones desde el backend
 /*fetch('http://localhost:3000/canciones')
@@ -154,7 +155,6 @@ document.querySelector('#skip').addEventListener('click', () => {
         document.querySelector('#skip').style.visibility = 'hidden';
         document.querySelector('#guess').style.visibility = 'hidden';
         document.querySelector('#texto').style.visibility = 'hidden';
-        audioL = new Audio('./audio/negative_beeps-6008.mp3');
         playAudio(audioL);
         break;
       default:
@@ -239,7 +239,6 @@ document.querySelector('#guess').addEventListener('click', () => {
         document.getElementById('win1').innerText = "Perdiste, La canción era: ";
         document.getElementById('win2').innerText = cancion + " - " + artista;
         document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p> <p>🟥🟥🟥🟥🟥</p>`;
-        audioL = new Audio('./public/audio/negative_beeps-6008.mp3');
         playAudio(audioL);
         document.getElementById('play1').disabled = false;
         document.getElementById('play2').disabled = false;
