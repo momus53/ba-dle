@@ -274,3 +274,32 @@ document.querySelector('#compartirbtn').addEventListener('click', () => {
     console.error('Failed to copy content: ', err);
   });
 });
+
+//LOGICA MODO OSCURO-CLARO
+const themeToggle = document.getElementById('themeToggle');
+let cartas = document.querySelectorAll('.card');
+// Alternar entre modo claro y oscuro
+themeToggle.addEventListener('click', () => {
+  const theme = document.documentElement.getAttribute('data-bs-theme');
+  if(theme === 'dark'){
+    document.documentElement.setAttribute('data-bs-theme', 'light');
+        cartas.forEach(carta => {
+      if(carta.style.backgroundColor != 'rgb(196, 58, 58)' && carta.style.backgroundColor != 'rgb(11, 145, 6)'){
+        carta.style.backgroundColor = 'rgb(255, 196, 120)';
+      }
+      });
+      themeToggle.classList.remove('lightmodebtn');
+      themeToggle.classList.add('darkmodebtn');
+
+  } else {
+    document.documentElement.setAttribute('data-bs-theme', 'dark');
+    cartas.forEach(carta => {
+      if(carta.style.backgroundColor != 'rgb(196, 58, 58)' && carta.style.backgroundColor != 'rgb(11, 145, 6)'){
+        carta.style.backgroundColor = 'rgb(20, 20, 20)';
+      }
+      });
+      themeToggle.classList.remove('darkmodebtn');
+      themeToggle.classList.add('lightmodebtn');
+  }
+
+});

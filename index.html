@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html id="htmlmain" lang="en" data-bs-theme="light">
   <head>
     <meta charset="UTF-8" />
     <!-- Bootstrap 5 CSS -->
@@ -24,8 +24,8 @@
             <img src="./public/info.png" alt="help" style="width: 25px; height: 25px;">
           </button>
         </div>
-        
-        <div class="card card-highlight" id="card6" style="background-color:rgba(143, 143, 143, 0.61); display: flex; align-items: center; border: 2px solid rgb(20, 20, 20); border-radius: 10px; margin-bottom: 10px;margin-top: 20px; padding: 0px;">
+
+        <div class="card card-highlight" id="card6" style="background-color:rgba(255, 196, 120); display: flex; align-items: center; border: 2px solid rgb(20, 20, 20); border-radius: 10px; margin-bottom: 10px;margin-top: 20px; padding: 0px;">
           <strong class="card-body" id="pistaYT">
           </strong>
         </div>
@@ -100,9 +100,12 @@
           <h3 id="win1"></h3>
           <h3 id="win2"></h3>
 
-          <div>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 20px;">
             <button id="skip" type="button" style="border-radius: 20px;"></button>
             <button id="guess" type="button" style="border-radius: 20px;"></button>
+            <button id="themeToggle" type="button" style="border-radius: 20px;" class="darkmodebtn">
+              <img src="./public/moon.png" alt="share" style="width: 25px; height: 25px; margin-bottom: 1px;">
+            </button>
           </div>
           
         <p class="read-the-docs">
@@ -177,7 +180,7 @@
           </div>
           <a href="https://bandle.app/">bañdle.app</a>
           <br>
-        <div class="modal-footer">
+        <div class="modal-footer" style="margin-top: 15px;">
           <button id="compartirbtn" type="button" class="btn btn-success" data-bs-dismiss="modal">Compartir</button>
         </div>
       </div>  
