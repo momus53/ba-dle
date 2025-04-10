@@ -163,7 +163,11 @@ document.querySelector('#skip').addEventListener('click', () => {
   }
 });
 document.querySelector('#guess').addEventListener('click', () => {
-  const userGuess = document.querySelector('#textInput').value.toLowerCase();
+  var textInput = document.querySelector('#textInput').value;
+  if (textInput === '') {
+    return;
+  }
+  const userGuess = textInput.toLowerCase();
   const correctAnswer = `${cancion.toLowerCase()} - ${artista.toLowerCase()}`;
   if (userGuess === correctAnswer) {
     document.getElementById('win1').innerText = "¡Ganaste! La canción es:";
