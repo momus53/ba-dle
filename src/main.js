@@ -5,7 +5,7 @@ import { setupPlay2} from './play2.js'
 import { setupPlay3} from './play3.js'
 import { setupPlay4} from './play4.js'
 import { playAudio, stopAudio } from './audioManager.js'
-//import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import { playConfetti } from './confetti.js'
 export {Nrocancion}
 
 const suggestions = document.getElementById('suggestions');
@@ -166,94 +166,96 @@ document.querySelector('#guess').addEventListener('click', () => {
   var textInput = document.querySelector('#textInput').value;
   if (textInput === '') {
     return;
-  }
-  const userGuess = textInput.toLowerCase();
-  const correctAnswer = `${cancion.toLowerCase()} - ${artista.toLowerCase()}`;
-  if (userGuess === correctAnswer) {
-    document.getElementById('win1').innerText = "¡Ganaste! La canción es:";
-    document.getElementById('win2').innerText = `${cancion} - ${artista}`;
-    if(pista == 0){
-      document.getElementById('card1').style.backgroundColor = 'rgb(11, 145, 6)';
-      document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟩⬜⬜⬜⬜</p>`;
-    }else{
+  }else{
+    const userGuess = textInput.toLowerCase();
+    const correctAnswer = `${cancion.toLowerCase()} - ${artista.toLowerCase()}`;
+    if (userGuess === correctAnswer) {
+      document.getElementById('win1').innerText = "¡Ganaste! La canción es:";
+      document.getElementById('win2').innerText = `${cancion} - ${artista}`;
+      if(pista == 0){
+        document.getElementById('card1').style.backgroundColor = 'rgb(11, 145, 6)';
+        playConfetti();
+        document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟩⬜⬜⬜⬜</p>`;
+      }else{
+        document.getElementById('card'+(pista+1)).style.backgroundColor = 'rgb(11, 145, 6)';
+        playConfetti();
+      }
+      document.getElementById('play1').disabled = false;
+      document.getElementById('play2').disabled = false;
+      document.getElementById('play3').disabled = false;
+      document.getElementById('play4').disabled = false;
+      document.querySelector('#skip').style.visibility = 'hidden';
+      document.querySelector('#guess').style.visibility = 'hidden';
+      document.querySelector('#texto').style.visibility = 'hidden';
+      switch (pista) {
+        case 1:
+         document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟩⬜⬜⬜</p>`;
+          break;
+        case 2:
+         document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟥🟩⬜⬜</p>`;
+          break;
+        case 3:
+         document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟥🟥🟩⬜</p>`; 
+          break;
+        case 4:
+         document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟥🟥🟩⬜</p>`;
+          break;
+        case 5:
+         document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟥🟥🟥🟩</p>`;
+          break;
+        default:
+          break;
+      }
+    } else {
       pista++;
-      document.getElementById('card'+pista).style.backgroundColor = 'rgb(11, 145, 6)';
-    }
-    document.getElementById('play1').disabled = false;
-    document.getElementById('play2').disabled = false;
-    document.getElementById('play3').disabled = false;
-    document.getElementById('play4').disabled = false;
-    document.querySelector('#skip').style.visibility = 'hidden';
-    document.querySelector('#guess').style.visibility = 'hidden';
-    document.querySelector('#texto').style.visibility = 'hidden';
-    switch (pista) {
-      case 1:
-       document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟩⬜⬜⬜</p>`;
-        break;
-      case 2:
-       document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟥🟩⬜⬜</p>`;
-        break;
-      case 3:
-       document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟥🟥🟩⬜</p>`; 
-        break;
-      case 4:
-       document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟥🟥🟩⬜</p>`;
-        break;
-      case 5:
-       document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟥🟥🟥🟩</p>`;
-        break;
-      default:
-        break;
-    }
-  } else {
-    pista++;
-    console.log(pista);
-    switch (pista) {
-      case 1:
-        toast.show()
-        document.getElementById('card1').style.backgroundColor = 'rgb(196, 58, 58)';
-        document.getElementById('card2').classList.add('cardbounce');
-        document.getElementById('play2').disabled = false;
-        stopAudio();
-        break;
-      case 2:
-        toast.show()
-        document.getElementById('card2').style.backgroundColor = 'rgb(196, 58, 58)';
-        document.getElementById('card3').classList.add('cardbounce');
-        document.getElementById('play3').disabled = false;
-        stopAudio();
-        break;
-      case 3:
-        toast.show()
-        document.getElementById('card3').style.backgroundColor = 'rgb(196, 58, 58)';
-        document.getElementById('card4').classList.add('cardbounce');
-        document.getElementById('play4').disabled = false;
-        stopAudio();
-        break;
-      case 4:
-        toast.show()
-        document.getElementById('card4').style.backgroundColor = 'rgb(196, 58, 58)';
-        document.getElementById('card5').classList.add('cardbounce');
-        document.getElementById('pista5').innerText=pistas5[aux];
-        stopAudio();
-        break;
-      case 5:
-        toast.show();
-        document.getElementById('card5').style.backgroundColor = 'rgb(196, 58, 58)';
-        document.getElementById('win1').innerText = "Perdiste, La canción era: ";
-        document.getElementById('win2').innerText = cancion + " - " + artista;
-        document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p> <p>🟥🟥🟥🟥🟥</p>`;
-        playAudio(audioL);
-        document.getElementById('play1').disabled = false;
-        document.getElementById('play2').disabled = false;
-        document.getElementById('play3').disabled = false;
-        document.getElementById('play4').disabled = false;
-        document.querySelector('#skip').style.visibility = 'hidden';
-        document.querySelector('#guess').style.visibility = 'hidden';
-        document.querySelector('#texto').style.visibility = 'hidden';
-        break;
-      default:
-        break;
+      console.log(pista);
+      switch (pista) {
+        case 1:
+          toast.show()
+          document.getElementById('card1').style.backgroundColor = 'rgb(196, 58, 58)';
+          document.getElementById('card2').classList.add('cardbounce');
+          document.getElementById('play2').disabled = false;
+          stopAudio();
+          break;
+        case 2:
+          toast.show()
+          document.getElementById('card2').style.backgroundColor = 'rgb(196, 58, 58)';
+          document.getElementById('card3').classList.add('cardbounce');
+          document.getElementById('play3').disabled = false;
+          stopAudio();
+          break;
+        case 3:
+          toast.show()
+          document.getElementById('card3').style.backgroundColor = 'rgb(196, 58, 58)';
+          document.getElementById('card4').classList.add('cardbounce');
+          document.getElementById('play4').disabled = false;
+          stopAudio();
+          break;
+        case 4:
+          toast.show()
+          document.getElementById('card4').style.backgroundColor = 'rgb(196, 58, 58)';
+          document.getElementById('card5').classList.add('cardbounce');
+          document.getElementById('pista5').innerText=pistas5[aux];
+          stopAudio();
+          break;
+        case 5:
+          toast.show();
+          document.getElementById('card5').style.backgroundColor = 'rgb(196, 58, 58)';
+          document.getElementById('win1').innerText = "Perdiste, La canción era: ";
+          document.getElementById('win2').innerText = cancion + " - " + artista;
+          document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p> <p>🟥🟥🟥🟥🟥</p>`;
+          playAudio(audioL);
+          document.getElementById('play1').disabled = false;
+          document.getElementById('play2').disabled = false;
+          document.getElementById('play3').disabled = false;
+          document.getElementById('play4').disabled = false;
+          document.querySelector('#skip').style.visibility = 'hidden';
+          document.querySelector('#guess').style.visibility = 'hidden';
+          document.querySelector('#texto').style.visibility = 'hidden';
+          break;
+        default:
+          break;
+      }
     }
   }
 });
