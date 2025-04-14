@@ -155,6 +155,7 @@ document.querySelector('#skip').addEventListener('click', () => {
         document.querySelector('#skip').style.visibility = 'hidden';
         document.querySelector('#guess').style.visibility = 'hidden';
         document.querySelector('#texto').style.visibility = 'hidden';
+        document.getElementById('themeToggle').style.visibility = 'hidden';
         playAudio(audioL);
         break;
       default:
@@ -169,6 +170,7 @@ document.querySelector('#guess').addEventListener('click', () => {
   }else{
     const userGuess = textInput.toLowerCase();
     const correctAnswer = `${cancion.toLowerCase()} - ${artista.toLowerCase()}`;
+    document.querySelector('#textInput').value = '';
     if (userGuess === correctAnswer) {
       document.getElementById('win1').innerText = "¡Ganaste! La canción es:";
       document.getElementById('win2').innerText = `${cancion} - ${artista}`;
@@ -187,6 +189,8 @@ document.querySelector('#guess').addEventListener('click', () => {
       document.querySelector('#skip').style.visibility = 'hidden';
       document.querySelector('#guess').style.visibility = 'hidden';
       document.querySelector('#texto').style.visibility = 'hidden';
+      document.getElementById('themeToggle').style.visibility = 'hidden';
+
       switch (pista) {
         case 1:
          document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟩⬜⬜⬜</p>`;
@@ -252,6 +256,8 @@ document.querySelector('#guess').addEventListener('click', () => {
           document.querySelector('#skip').style.visibility = 'hidden';
           document.querySelector('#guess').style.visibility = 'hidden';
           document.querySelector('#texto').style.visibility = 'hidden';
+          document.getElementById('themeToggle').style.visibility = 'hidden';
+
           break;
         default:
           break;
