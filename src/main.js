@@ -48,6 +48,7 @@ const toast = new bootstrap.Toast(toastLiveExample)
 const toast1 = new bootstrap.Toast(toastCopy)
 const toast2 = new bootstrap.Toast(toastCopy2)
 
+const salidaShare = ['⬜', '⬜', '⬜', '⬜', '⬜'];
 
 textInput.addEventListener('input', () => {
   const query = textInput.value.toLowerCase();
@@ -133,8 +134,8 @@ document.getElementById('card1').classList.add('cardbounce');
 let pista = 0; // 0-6 indica en que pista esta actualmente el usuario
 document.querySelector('#skip').addEventListener('click', () => {
   if (pista < 6) {
+    salidaShare[pista] = '🟥';
     pista++;
-    console.log(pista);
     switch (pista) {
       case 1:
         document.getElementById('card1').style.backgroundColor = 'rgb(196, 58, 58)';
@@ -161,7 +162,7 @@ document.querySelector('#skip').addEventListener('click', () => {
         stopAudio();
         break;
       case 5:
-        document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p> <p>🟥🟥🟥🟥🟥</p>`;
+        document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p> <p>${salidaShare.toString}</p>`;
         document.getElementById('card5').style.backgroundColor = 'rgb(196, 58, 58)';
         document.getElementById('win1').innerText = "Perdiste, La canción era: ";
         document.getElementById('win2').innerText = cancion + " - " + artista;
@@ -196,6 +197,7 @@ document.querySelector('#guess').addEventListener('click', () => {
         document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟩⬜⬜⬜⬜</p>`;
       }else{
         document.getElementById('card'+(pista+1)).style.backgroundColor = 'rgb(11, 145, 6)';
+        salidaShare[pista] = '🟩';
         playConfetti();
       }
       document.getElementById('play1').disabled = false;
@@ -206,86 +208,70 @@ document.querySelector('#guess').addEventListener('click', () => {
       document.querySelector('#guess').style.visibility = 'hidden';
       document.querySelector('#texto').style.visibility = 'hidden';
       document.getElementById('themeToggle').style.visibility = 'hidden';
-
-      switch (pista) {
-        case 1:
-         document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟩⬜⬜⬜</p>`;
-          break;
-        case 2:
-         document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟥🟩⬜⬜</p>`;
-          break;
-        case 3:
-         document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟥🟥🟩⬜</p>`; 
-          break;
-        case 4:
-         document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟥🟥🟩⬜</p>`;
-          break;
-        case 5:
-         document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>🟥🟥🟥🟥🟩</p>`;
-          break;
-        default:
-          break;
-      }
+      document.getElementById('pista5').innerText=pistas5[aux];
+      document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p>  <p>${salidaShare.join('')}</p>`;
     } else {
       if(userArtist === artista.toLowerCase()){
         document.getElementById('card'+(pista+1)).style.backgroundColor = 'rgb(194, 191, 0)';
         document.getElementById('play'+(pista+1)).disabled = false;
-        document.getElementById('card'+(pista+1)).classList.add('cardbounce');
+        document.getElementById('card'+(pista+2)).classList.add('cardbounce');
+        salidaShare[pista] = '🟨';
         toast2.show();
         stopAudio();
         pista++;
       }else{
+        salidaShare[pista] = '🟥';
         pista++;
-      console.log(pista);
-      switch (pista) {
-        case 1:
-          toast.show()
-          document.getElementById('card1').style.backgroundColor = 'rgb(196, 58, 58)';
-          document.getElementById('card2').classList.add('cardbounce');
-          document.getElementById('play2').disabled = false;
-          stopAudio();
-          break;
-        case 2:
-          toast.show()
-          document.getElementById('card2').style.backgroundColor = 'rgb(196, 58, 58)';
-          document.getElementById('card3').classList.add('cardbounce');
-          document.getElementById('play3').disabled = false;
-          stopAudio();
-          break;
-        case 3:
-          toast.show()
-          document.getElementById('card3').style.backgroundColor = 'rgb(196, 58, 58)';
-          document.getElementById('card4').classList.add('cardbounce');
-          document.getElementById('play4').disabled = false;
-          stopAudio();
-          break;
-        case 4:
-          toast.show()
-          document.getElementById('card4').style.backgroundColor = 'rgb(196, 58, 58)';
-          document.getElementById('card5').classList.add('cardbounce');
-          document.getElementById('pista5').innerText=pistas5[aux];
-          stopAudio();
-          break;
-        case 5:
-          toast.show();
-          document.getElementById('card5').style.backgroundColor = 'rgb(196, 58, 58)';
-          document.getElementById('win1').innerText = "Perdiste, La canción era: ";
-          document.getElementById('win2').innerText = cancion + " - " + artista;
-          document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p> <p>🟥🟥🟥🟥🟥</p>`;
-          playAudio(audioL);
-          document.getElementById('play1').disabled = false;
-          document.getElementById('play2').disabled = false;
-          document.getElementById('play3').disabled = false;
-          document.getElementById('play4').disabled = false;
-          document.querySelector('#skip').style.visibility = 'hidden';
-          document.querySelector('#guess').style.visibility = 'hidden';
-          document.querySelector('#texto').style.visibility = 'hidden';
-          document.getElementById('themeToggle').style.visibility = 'hidden';
+        console.log(pista);
+        switch (pista) {
+          case 1:
+            toast.show()
+            document.getElementById('card1').style.backgroundColor = 'rgb(196, 58, 58)';
+            document.getElementById('card2').classList.add('cardbounce');
+            document.getElementById('play2').disabled = false;
+            stopAudio();
+            break;
+          case 2:
+            toast.show()
+            document.getElementById('card2').style.backgroundColor = 'rgb(196, 58, 58)';
+            document.getElementById('card3').classList.add('cardbounce');
+            document.getElementById('play3').disabled = false;
+            stopAudio();
+            break;
+          case 3:
+            toast.show()
+            document.getElementById('card3').style.backgroundColor = 'rgb(196, 58, 58)';
+            document.getElementById('card4').classList.add('cardbounce');
+            document.getElementById('play4').disabled = false;
+            stopAudio();
+            break;
+          case 4:
+            toast.show()
+            document.getElementById('card4').style.backgroundColor = 'rgb(196, 58, 58)';
+            document.getElementById('card5').classList.add('cardbounce');
+            document.getElementById('pista5').innerText=pistas5[aux];
+            stopAudio();
+            break;
+          case 5:
+            toast.show();
+            document.getElementById('card5').style.backgroundColor = 'rgb(196, 58, 58)';
+            document.getElementById('win1').innerText = "Perdiste, La canción era: ";
+            document.getElementById('win2').innerText = cancion + " - " + artista;
+            document.getElementById('compartir').innerHTML = `<p>Bandle #${Nrocancion} ${currentDate}</p> <p>${salidaShare.join('')}</p>`;
+            playAudio(audioL);
+            document.getElementById('play1').disabled = false;
+            document.getElementById('play2').disabled = false;
+            document.getElementById('play3').disabled = false;
+            document.getElementById('play4').disabled = false;
+            document.querySelector('#skip').style.visibility = 'hidden';
+            document.querySelector('#guess').style.visibility = 'hidden';
+            document.querySelector('#texto').style.visibility = 'hidden';
+            document.getElementById('themeToggle').style.visibility = 'hidden';
 
-          break;
-        default:
-          break;
-      }
+            break;
+          default:
+            break;
+        }
       }
     }
   }
@@ -329,3 +315,25 @@ themeToggle.addEventListener('click', () => {
   }
 
 });
+
+// Example usage:
+const exampleArray = ['r', 'r', 'a', 'v', 'b'];
+console.log(mapCharactersToSquares(exampleArray)); // Output: 🟥🟥🟨🟩⬜
+
+function mapCharactersToSquares(arr) {
+  return arr.map(char => {
+    switch (char) {
+      case 'r':
+        return '🟥';
+      case 'v':
+        return '🟩';
+      case 'b':
+        return '⬜';
+      case 'a':
+        return '🟨';
+      default:
+        return '';
+    }
+  }).join('');
+}
+
