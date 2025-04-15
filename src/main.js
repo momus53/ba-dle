@@ -39,6 +39,16 @@ const pistas3 = ['Piano+Violin', 'Piano+Sintetizador','Guitarra+Sintetizador','S
 const pistas4 = ['Voces','Voces','Voces','Voces'];//, 'artista4', 'artista5', 'artista6', 'artista7'];
 const pistas5 = ['PRUEBA', 'IMPECABLE', 'CAPITAN', 'CON MALDAD', 'P4RUEBA', 'P5RUEBA'];
 
+
+
+const toastLiveExample = document.getElementById('liveToast')
+const toastCopy = document.getElementById('copyToast')
+const toastCopy2 = document.getElementById('copyToast1')
+const toast = new bootstrap.Toast(toastLiveExample)
+const toast1 = new bootstrap.Toast(toastCopy)
+const toast2 = new bootstrap.Toast(toastCopy2)
+
+
 textInput.addEventListener('input', () => {
   const query = textInput.value.toLowerCase();
   if (query.length > 0) {
@@ -78,6 +88,9 @@ textInput.addEventListener('input', () => {
       'Los Dinosaurios - Charly García',
       'Mariposa Tecknicolor - Fito Páez',
       'Un Vestido y un Amor - Fito Páez',
+      'Nada Personal - Soda Stereo',
+      'Cuando Pase el Temblor - Soda Stereo',
+      'Don - Miranda!',      
     ];
     const filteredSuggestions = exampleSuggestions.filter(suggestion => suggestion.toLowerCase().includes(query));
     suggestions.innerHTML = filteredSuggestions.map(suggestion => `<div class="suggestion-item">${suggestion}</div>`).join('');
@@ -168,9 +181,12 @@ document.querySelector('#guess').addEventListener('click', () => {
   if (textInput === '') {
     return;
   }else{
+
     const userGuess = textInput.toLowerCase();
+    const [userSong, userArtist] = userGuess.split(' - ').map(part => part.trim());
     const correctAnswer = `${cancion.toLowerCase()} - ${artista.toLowerCase()}`;
     document.querySelector('#textInput').value = '';
+
     if (userGuess === correctAnswer) {
       document.getElementById('win1').innerText = "¡Ganaste! La canción es:";
       document.getElementById('win2').innerText = `${cancion} - ${artista}`;
@@ -211,7 +227,15 @@ document.querySelector('#guess').addEventListener('click', () => {
           break;
       }
     } else {
-      pista++;
+      if(userArtist === artista.toLowerCase()){
+        document.getElementById('card'+(pista+1)).style.backgroundColor = 'rgb(194, 191, 0)';
+        document.getElementById('play'+(pista+1)).disabled = false;
+        document.getElementById('card'+(pista+1)).classList.add('cardbounce');
+        toast2.show();
+        stopAudio();
+        pista++;
+      }else{
+        pista++;
       console.log(pista);
       switch (pista) {
         case 1:
@@ -262,16 +286,10 @@ document.querySelector('#guess').addEventListener('click', () => {
         default:
           break;
       }
+      }
     }
   }
 });
-
-
-const toastLiveExample = document.getElementById('liveToast')
-const toastCopy = document.getElementById('copyToast')
-const toast = new bootstrap.Toast(toastLiveExample)
-const toast1 = new bootstrap.Toast(toastCopy)
-
 
 
 document.querySelector('#compartirbtn').addEventListener('click', () => {
