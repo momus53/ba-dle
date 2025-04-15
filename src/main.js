@@ -213,7 +213,7 @@ document.querySelector('#guess').addEventListener('click', () => {
     } else {
       if(userArtist === artista.toLowerCase()){
         document.getElementById('card'+(pista+1)).style.backgroundColor = 'rgb(194, 191, 0)';
-        document.getElementById('play'+(pista+1)).disabled = false;
+        document.getElementById('play'+(pista+2)).disabled = false;
         document.getElementById('card'+(pista+2)).classList.add('cardbounce');
         salidaShare[pista] = '🟨';
         toast2.show();
